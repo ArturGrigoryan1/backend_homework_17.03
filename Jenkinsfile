@@ -8,12 +8,12 @@ pipeline {
             
             ],
      causeString: 'Triggered on $base',
-     token: 'abc123',
+     token: 'back123',
      tokenCredentialId: '' )
     }
     environment {
         hash=env.hash.substring(0, 7)
-        registry = "arturgrigoryan1/front"
+        registry = "arturgrigoryan1/back"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
@@ -47,17 +47,12 @@ pipeline {
             steps {
                  withCredentials([string(credentialsId: 'github-token', variable: 'token')]
                                 ){                    
-                     sh '''if [ -d devops_homework_17.03 ];
-                     then
-                         rm -r devops_homework_17.03
-                     fi
-                     '''
                      git branch: 'main', url: 'https://github.com/ArturGrigoryan1/devops_homework_17.03.git'
                      sh '''git config --global user.email "arturishkhanich@gmail.com"
                      git config --global user.name "Artur"
-                     python3 front.py
+                     python3 back.py
                      git add .
-                     git commit -m "change in frontend"
+                     git commit -m "change in backend"
                      git remote remove origin
                      git remote add origin https://ArturGrigoryan1:$token@github.com/ArturGrigoryan1/devops_homework_17.03.git
                      git remote -v
