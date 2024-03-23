@@ -4,11 +4,18 @@ const mongoose = require("mongoose");
 const port = 3001;
 const routes = require("./routes");
 
+const mongodbHost = process.env.MONGO_HOST;
+const mongodbPort = process.env.MONGO_PORT;
+const mongodbUsername = process.env.MONGO_LOGIN;
+const mongodbPassword = process.env.MONGO_PASSWORD;
+
+const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}/todos`;
+
 main().catch((err) => console.log(err));
 
 async function main() {
 //  await mongoose.connect("mongodb://mongo:27017/todos", {
-  await mongoose.connect("mongodb:http://localhost:27017/todos", {
+  await mongoose.connect(${mongodbUrl}, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });
