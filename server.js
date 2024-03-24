@@ -8,8 +8,9 @@ const mongodbHost = process.env.MONGO_HOST;
 const mongodbPort = process.env.MONGO_PORT;
 const mongodbUsername = process.env.MONGO_LOGIN;
 const mongodbPassword = process.env.MONGO_PASSWORD;
+const mongoDB = process.env.MONGO_DB;
 
-const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}`;
+const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}/${mongoDB}`;
 
 main().catch((err) => console.log(err));
 
