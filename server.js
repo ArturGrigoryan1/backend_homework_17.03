@@ -9,7 +9,7 @@ const mongodbPort = process.env.MONGO_PORT;
 const mongodbUsername = process.env.MONGO_LOGIN;
 const mongodbPassword = process.env.MONGO_PASSWORD;
 
-const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}/todos`;
+const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}`;
 
 main().catch((err) => console.log(err));
 
